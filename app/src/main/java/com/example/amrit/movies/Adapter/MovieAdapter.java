@@ -11,11 +11,13 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.amrit.movies.AsyncTask.SearchMovieAsyncTask;
 import com.example.amrit.movies.AsyncTask.SearchVideoAsyncTask;
 import com.example.amrit.movies.Interface.AsyncResponse;
 import com.example.amrit.movies.Interface.OnItemClick;
+import com.example.amrit.movies.Manager.NetworkManager;
 import com.example.amrit.movies.Pojos.Movie;
 import com.example.amrit.movies.R;
 import com.squareup.picasso.Picasso;
@@ -110,6 +112,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.CustomViewHo
                     final Movie movie = movieList.get(pos);
                     String params = Integer.toString(movie.getId());
                     if(movie.getVideo_path()==null) {
+                        if(NetworkManager.getInstance(context).isOnline() == false) {
+                            Toast.makeText(context, "You are offline!!", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
                         SearchVideoAsyncTask videoAsyncTask = new SearchVideoAsyncTask();
                         videoAsyncTask.mResponse = new AsyncResponse() {
                             @Override

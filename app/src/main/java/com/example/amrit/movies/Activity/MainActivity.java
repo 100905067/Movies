@@ -6,11 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.example.amrit.movies.Adapter.MovieAdapter;
 import com.example.amrit.movies.AsyncTask.SearchMovieAsyncTask;
 import com.example.amrit.movies.Interface.AsyncResponse;
 import com.example.amrit.movies.Interface.OnItemClick;
+import com.example.amrit.movies.Manager.NetworkManager;
 import com.example.amrit.movies.Pojos.Movie;
 import com.example.amrit.movies.R;
 
@@ -54,6 +56,10 @@ public class MainActivity extends AppCompatActivity implements OnItemClick {
     }
 
     public void populateMovies() {
+        if(!NetworkManager.getInstance(getApplicationContext()).isOnline()) {
+            Toast.makeText(getApplicationContext(), "You are offline!!", Toast.LENGTH_SHORT).show();
+            return;
+        }
         SearchMovieAsyncTask searchMovies = new SearchMovieAsyncTask();
         searchMovies.mResponse = new AsyncResponse() {
             @Override
