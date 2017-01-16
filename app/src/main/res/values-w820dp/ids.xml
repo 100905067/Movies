@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="movieImg" type="id">movieImg</item>
+    <item name="movieTitle" type="id">movieTitle</item>
+    <item name="movieOverview" type="id">movieOverview</item>
+    <item name="movieView" type="id">movieView</item>
+    <item name="cv" type="id">cv</item>
+    <item name="refresh" type="id">refresh</item>
+    <item name="videoView" type="id">videoView</item>
+    <item name="imgLay" type="id">imgLay</item>
+    <item name="descImg" type="id">descImg</item>
+    <item name="descTitle" type="id">descTitle</item>
+    <item name="rating" type="id">rating</item>
+    <item name="descOverview" type="id">descOverview</item>
+    <item name="ratinTxt" type="id">ratinTxt</item>
+    <item name="descPopularity" type="id">descPopularity</item>
+    <item name="watch" type="id">watch</item>
+    <item name="readMore" type="id">readMore</item>
+</resources>
